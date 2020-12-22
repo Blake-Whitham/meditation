@@ -1,45 +1,24 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { GetStaticProps } from 'next'
+
 import Layout, { siteTitle } from '../components/layout'
 import Date from '../components/date'
+
 import utilStyles from '../styles/utils.module.css'
 
 import { getSortedPostsData } from '../lib/posts'
 
 
-//Server side api data fetching | builds bundle with data fetched at request time
-// export async function getServerSideProps(context) {
-//   return {
-//     props: {
-//       // props for your component
-//     }
-//   }
-// }
-
-
-// Client side rendering for user specific data | renders all but fetched data server side
-// import useSWR from 'swr'
-
-// function Profile() {
-//   const { data, error } = useSWR('/api/user', fetch)
-
-//   if (error) return <div>failed to load</div>
-//   if (!data) return <div>loading...</div>
-//   return <div>hello {data.name}!</div>
-// }
-
-// only runs on the server | not included in the bundle for this page
-//SSR
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
-
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData,
+}: {
+  allPostsData: {
+    date: string,
+    id: string,
+    title: string,
+  }[]
+}) {
   return (
     <Layout home>
       <Head>
@@ -78,3 +57,37 @@ export default function Home({ allPostsData }) {
     </Layout>
   )
 }
+
+
+//Server side api data fetching | builds bundle with data fetched at request time
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // props for your component
+//     }
+//   }
+// }
+
+
+// Client side rendering for user specific data | renders all but fetched data server side
+// import useSWR from 'swr'
+
+// function Profile() {
+//   const { data, error } = useSWR('/api/user', fetch)
+
+//   if (error) return <div>failed to load</div>
+//   if (!data) return <div>loading...</div>
+//   return <div>hello {data.name}!</div>
+// }
+
+// only runs on the server | not included in the bundle for this page
+//SSR
+// export async function getStaticProps() {
+  export const getStaticProps: GetStaticProps = async () => {
+    const allPostsData = getSortedPostsData()
+    return {
+      props: {
+        allPostsData
+      }
+    }
+  }
