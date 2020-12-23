@@ -1,11 +1,16 @@
-html,
+html {
+  background: rgb(130,179,212);
+  background: linear-gradient(170deg,rgba(54,151,194,1) 0%,  rgba(130,179,212,1) 30%, rgba(190,206,229,1) 80%, rgba(221,182,227,1) 100%);
+  width: 100vw;
+  height: 100vh;
+}
 body {
-  padding: 0;
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
+  Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 * {

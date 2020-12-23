@@ -2,6 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps } from 'next'
 
+import { useState } from 'react';
+
+import { Breather } from '../components/breather'
+import { Intro } from '../components/intro'
+
 import Layout, { siteTitle } from '../components/layout'
 import Date from '../components/date'
 
@@ -10,49 +15,25 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 
 
-export default function Home({
-  allPostsData,
-}: {
-  allPostsData: {
-    date: string,
-    id: string,
-    title: string,
-  }[]
-}) {
+
+
+export default function Home() {
+  const [size, setSize] = useState(500);
+  const [flow, setFlow] = useState(1);
+  const [countDown, setCountDown] = useState(10);
+  const [trigger, setTrigger] = useState(true);
+
+  // const timer:Function = () => {
+
+  // }
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height" />
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hello, I'm
-          {' '}
-          <Link href="/posts/first-post">
-            <a><b>Blake</b></a>
-          </Link>
-          {' '}
-          I am a continuing student of the electronic arts with a history in elevated event design and production
-        </p>
-        <p>
-          (This is a sample website - you could be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {<Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>}
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
+        <Intro />
       </section>
     </Layout>
   )
@@ -83,11 +64,11 @@ export default function Home({
 // only runs on the server | not included in the bundle for this page
 //SSR
 // export async function getStaticProps() {
-  export const getStaticProps: GetStaticProps = async () => {
-    const allPostsData = getSortedPostsData()
-    return {
-      props: {
-        allPostsData
-      }
-    }
-  }
+  // export const getStaticProps: GetStaticProps = async () => {
+  //   const allPostsData = getSortedPostsData()
+  //   return {
+  //     props: {
+  //       allPostsData
+  //     }
+  //   }
+  // }
