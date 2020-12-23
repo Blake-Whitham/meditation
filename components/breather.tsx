@@ -8,6 +8,10 @@ export const Breather = ({
   flow: number,
 }) => {
 
+  if (size > 500) {
+    size = 500
+  }
+
   return (
     <svg id="core" height={size} width={size}>
       <defs>
@@ -18,7 +22,7 @@ export const Breather = ({
           <stop offset="30%" stopColor="rgba(221,182,227,1)"/>
           <stop offset="70%" stopColor="#4f9ec0"/>
           <animate attributeName="r"
-            begin="0s"
+            begin="0.5s"
             calcMode="spline"
             keySplines="0.3 0 0.7 1;0.3 0 0.7 1"
             values=".515;1.5;.515"
@@ -32,42 +36,47 @@ export const Breather = ({
       <circle
         cx={size / 2}
         cy={size / 2}
-        r={100}
+        r={size / 10}
         stroke="url(#GradientReflect)"
-        strokeWidth={60}
+        strokeWidth={size / 10}
         fill="transparent"
+        strokeOpacity="1"
       >
+      <animate id="fadein"
+        attributeName="opacity"
+        from="0"
+        to="1"
+        dur="0.5s"
+        begin="0s"
+      />
         {/* Grow the radius */}
       <animate
         attributeName="r"
-        begin="0s"
+        begin="0.5s"
         calcMode="spline"
         keySplines="0.3 0 0.7 1;0.3 0 0.7 1"
-        values="100;200;100"
+        values={`${size / 10 };${size / 2.5};${size / 10 }`}
         keyTimes="0;0.5;1"
         dur="7s"
         repeatCount="10"
         />
 
-      <animate
+      <animate id="growRing"
         attributeName="stroke-width"
-        begin="0s"
+        begin="0.5s"
         calcMode="spline"
         keySplines="0.3 0 1 1;0.3 0 1 1"
-        values="80;70;80"
+        values={`${size / 10 };${size / 13};${size / 10 }`}
         keyTimes="0;0.5;1"
         dur="7s"
         repeatCount="10"
       />
       <animate
-        attributeName="stroke-width"
-        begin="0s"
-        calcMode="spline"
-        keySplines="0.3 0 1 1;0.3 0 1 1"
-        values="80;70;80"
-        keyTimes="0;0.5;1"
-        dur="7s"
-        repeatCount="10"
+        attributeName="opacity"
+        from="1"
+        to="0.1"
+        dur="2s"
+        begin="growRing.end"
       />
       </circle>
     </svg>

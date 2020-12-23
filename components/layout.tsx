@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
+import styles from '../styles/layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
@@ -16,7 +16,6 @@ export default function Layout({
   return (
     <div className={styles.container}>
       <Head>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta
           name="description"
           content="Take a brief minute to reset and center yourself"
@@ -30,7 +29,7 @@ export default function Layout({
           <>
             <img
               src="/meditation.png"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+              className={`${utilStyles.borderCircle}`}
               alt={title}
             />
             <h1 className={utilStyles.heading2Xl}>{title}</h1>
@@ -46,11 +45,7 @@ export default function Layout({
                 />
               </a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{title}</a>
-              </Link>
-            </h2>
+            <h2 className={utilStyles.headingLg}>{title}</h2>
           </>
         )}
       </header>
