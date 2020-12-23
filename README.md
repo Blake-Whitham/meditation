@@ -1,4 +1,4 @@
-This is a project is powered by:
+This project is powered by:
 [Next.js](https://nextjs.org/)
 [TypeScript](https://www.typescriptlang.org/)
 

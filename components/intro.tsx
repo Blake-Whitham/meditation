@@ -33,7 +33,7 @@ export const Intro:React.FC = () => {
         return <h1>How did that feel?</h1>
       }
       if (time === -28) {
-        return window.location = "https://www.google.com";
+        return window.location.href = "https://www.google.com";
       }
     }
 
