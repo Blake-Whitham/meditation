@@ -19,7 +19,7 @@ export const Breather = ({
           <radialGradient id="GradientReflect"
                 r={.5}
                 spreadMethod="reflect">
-            <stop offset="20%" stopColor="#B2D0C6"/>
+            <stop offset="20%" stopColor="#B2D0C6="/>
             <stop offset="30%" stopColor="rgba(221,182,227,1)"/>
             <stop offset="70%" stopColor="#4f9ec0"/>
             <animate attributeName="r"

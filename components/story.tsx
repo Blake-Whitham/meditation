@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Breather } from './breather'
 
 export const Story:React.FC = () => {
-  const [time, setTime] = useState(3);
+  const [time, setTime] = useState(7);
 
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const Story:React.FC = () => {
       }, 3000);
       return
     }
-    if (time > -47) {
+    if (time > -48) {
       setTimeout(() => {
         let newTime = time - 1
         setTime(newTime);
@@ -24,6 +24,14 @@ export const Story:React.FC = () => {
    },[time]);
 
    const display:Function = () => {
+    if (time > 3) {
+      return (
+        <div>
+          <h1>please rest your hands, either on an armrest or on your lap.</h1>
+          <h1>Place your feet on the floor shoulder-width apart.</h1>
+        </div>
+      )
+    }
     if (time > 0) {
       return <h1>{time}</h1>
     }
