@@ -15,7 +15,7 @@ export const Story:React.FC = () => {
       }, 3000);
       return
     }
-    if (time > -47) {
+    if (time > -48) {
       setTimeout(() => {
         let newTime = time - 1
         setTime(newTime);
