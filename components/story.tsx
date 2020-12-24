@@ -8,11 +8,18 @@ export const Story:React.FC = () => {
 
 
   useEffect(() => {
-    if (time > -30) {
+    if (time > -2) {
       setTimeout(() => {
         let newTime = time - 1
         setTime(newTime);
       }, 3000);
+      return
+    }
+    if (time > -44) {//47
+      setTimeout(() => {
+        let newTime = time - 1
+        setTime(newTime);
+      }, 1000);
     }
    },[time]);
 
@@ -26,13 +33,13 @@ export const Story:React.FC = () => {
     if (time === -1) {
       return <h1>Breath with the image</h1>
     }
-    if (time < -1 && time > -26) {
-      return <Breather size={window.innerWidth * .75} flow={1} />
+    if (time < -1 && time > -46) {
+      return <Breather size={window.innerWidth * .75} clock={time} />
     }
-    if (time <= -26 && time > -28) {
+    if (time <= -46 && time > -48) {
       return <h1>How did that feel?</h1>
     }
-    if (time === -28) {
+    if (time === -48) {
       window.location.href = "https://www.google.com";
       return;
     }
