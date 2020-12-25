@@ -5,7 +5,7 @@ This project is powered by:
 [Next.js](https://nextjs.org/)
 [TypeScript](https://www.typescriptlang.org/)
 
-Examples of this web abb in production:
+Examples of this web app in production:
 #
 ![Ipad Pro](prod/meditationIpadPro.png)
 ![Pixel 2 XL](prod/meditationPixel2XL.png)
